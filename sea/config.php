@@ -1,20 +1,25 @@
 <?php
 /**
- * 配置文件
  * Created by PhpStorm.
  * User: duyonghai
- * Date: 2016/3/31
- * Time: 9:40
+ * Date: 2016/4/18
+ * Time: 11:07
  */
+namespace sea\library;
 
-return [
-    //网站基础配置
-    'web_url' => 'http://tp5.com',
+class config{
 
-    //数据库配置
-    'db_host' => 'localhost',
-    'db_user' => 'root',
-    'db_passwd' => '',
-    'db_name' => 'sea',
+    private static $config = '';
 
-];
+    public function __construct()
+    {
+        if(empty(self::$config)){
+            self::$config = require( SEA_PATH . 'config.php' );
+        }
+    }
+
+    public static function getConfig(){
+        return self::$config;
+    }
+
+}
